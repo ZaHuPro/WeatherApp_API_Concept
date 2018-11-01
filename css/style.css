@@ -4,17 +4,16 @@ body{
     color: rgb(0, 0, 0);
     font-family: 'Josefin Sans', sans-serif;
     text-align: center;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
 
   
 }
 .title{
     color: white;
-}
-.mainBox{
-    min-height: 100vh;
-    background-repeat: no-repeat;
-    background-size: 100%;
-
+    background-color: rgba(0, 255, 255, 0.226);
+    border-radius: 20px;
 }
 
 .headerMain{
@@ -22,7 +21,7 @@ body{
 }
 
 .contentMain{
-    background-color: rgba(0, 255, 255, 0.575);
+    background-color: rgba(0, 255, 255, 0.226);
     min-height: 500px;
     border-radius: 20px;
 }

@@ -1,8 +1,10 @@
 $(document).ready(function(){
 
+    var preload = new createjs.LoadQueue();
     var iPhoto  = 0;
+    var PhotoArray = new Array;
     var inputCondition = true;
-    var PhotoData = "";
+
     var API_Photo_Search = "Earth";
     const API_KEY_Weather = "7055fb803fe7eb7c53fc379c91c64dba";
     const API_KEY_Photo = "0f388edfe071bf3cfc4a630b874423d26ce35ca3c41da8975098ce049bf2961b";
@@ -40,23 +42,45 @@ $(document).ready(function(){
             API_Photo_Search = $("#inputCity").val();
            
         }
-        LoadPhotoData(API_Photo_Search);
+        LoadPhotoData(API_Photo_Search, iPhoto);
               
 
     });
 
 
 
-    function LoadPhotoData(SearchKey){
+    function LoadPhotoData(SearchKey, Number){
         var Link = "https://api.unsplash.com/search/photos?page=1&query=" + SearchKey + "&&client_id=" + API_KEY_Photo
 
         $.getJSON( Link, function( data ) {
-            $("#mainBox").css('background-image',"url("+ data.results[5].urls.regular +")");
-          
+            for(var i=0;i<=9;i++){
+                PhotoArray.push(data.results[i].urls.regular)
+            }
+            ChangeBackGround(PhotoArray[0]);
+            iPhoto = 1;
+
         });
     };
 
+    setInterval(function(){ 
+        ChangeBackGround(PhotoArray[iPhoto]);
+        iPhoto++;        
+        if (iPhoto >= 10){
+            iPhoto = 0
+        }
+        loadImage(PhotoArray[iPhoto]);
+     }, 10000);     
 
+    function loadImage(SRC) {
+        preload.addEventListener("fileload", handleFileComplete);
+        preload.loadFile(SRC);
+    }
+  
+  
+    function ChangeBackGround(URL){
+        $("#mainBox").css('background-image', 'url(' + URL + ')');
+    }
+    
 });
 
 
@@ -74,11 +98,3 @@ $(document).ready(function(){
 
 
 
-    // setInterval(function(){ 
-    //     var currentPicLink = PhotoData.results[iPhoto].urls.regular;
-       
-    //     iPhoto++;
-    //     if (iPhoto >= 10){
-    //         iPhoto = 0
-    //     }
-    //  }, 3000);
