@@ -1,18 +1,15 @@
 body{
     background-image: url("../bg/bg.jpg");
-    background-size: 100%;
     color: rgb(0, 0, 0);
     font-family: 'Josefin Sans', sans-serif;
     text-align: center;
     min-height: 100vh;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: 100%;
-
-  
 }
 .title{
     color: white;
-    background-color: rgba(0, 255, 255, 0.226);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
 }
 
@@ -21,34 +18,9 @@ body{
 }
 
 .contentMain{
-    background-color: rgba(0, 255, 255, 0.226);
+    background-color: rgba(0, 0, 0, 0.5);
     min-height: 500px;
     border-radius: 20px;
-}
-.outputSub{
-    padding: 10px;
-    text-align: justify;
-}
-.outputSub h1{
-    text-align: center;
-}
-
-.outputTable{
-    text-align: center;
-    width: 100%;
-    font-size: 18px;
-}
-
-.outputTable tr{
-    margin-top: 20px;
-    background-color: rgba(0, 0, 0, 0.096);
-}
-
-.outputTable tr td{
-    color: black;
-    font-weight: 800;
-    vertical-align: initial;
-    background-color: rgba(240, 248, 255, 0.349);
 }
 
 
@@ -57,9 +29,10 @@ body{
     margin:20px;
 }
 .inputSub{
+    min-width: 300px;
     margin: 10px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.678);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
 }
 .inputLable{
