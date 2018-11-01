@@ -1,0 +1,59 @@
+body{
+    background-color: rgb(58, 168, 252);
+    color: rgb(0, 0, 0);
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+}
+.mainBox{
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-image: url("https://images.unsplash.com/photo-1512660029633-769b8fba8557?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjI5MzQ3fQ&s=43bd6182e6feadd9aa1ccfdd25a419b6"); */
+}
+
+.headerMain{
+    margin: 20px;
+}
+
+.contentMain{
+    background-color: rgba(0, 255, 255, 0.575);
+    min-height: 350px;
+}
+.outputSub{
+    padding: 10px;
+    text-align: justify;
+}
+.outputSub h1{
+    text-align: center;
+}
+
+.outputTable{
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+}
+
+.outputTable tr{
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
+.outputTable tr td{
+    color: black;
+    font-weight: 800;
+    vertical-align: initial;
+    background-color: rgba(240, 248, 255, 0.349);
+}
+
+
+.inputtitle{
+    margin:20px;
+}
+.inputSub{
+    margin: 10px;
+    padding: 20px;
+}
+.inputLable{
+    max-width: 100px;
+    background-color: yellowgreen;
+}
