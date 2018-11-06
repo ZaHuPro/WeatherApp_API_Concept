@@ -33,6 +33,9 @@ $(document).ready(function(){
     var WeatherLink ;
     $("#formbtn").on("click", function(){
 
+        var Loading  = "<div class='row align-items-center justify-content-center'><div class=' loader loader-white'></div>";
+        $("#result").html(Loading);
+
         if (CheckMe == true) {
             WeatherLink = "https://api.openweathermap.org/data/2.5/weather?zip=" + $("#inputPincode").val()+ "," +$("#inputCountry").val() + "&appid=" + API_KEY_Weather
             
