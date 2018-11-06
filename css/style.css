@@ -41,25 +41,22 @@ body{
 }
 
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-  
-  @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-  }
-  
-  .loader {
-      border: 0.5rem solid rgba(204, 204, 204, .35); 
-      border-top: 0.5rem solid rgba(204, 204, 204, .85); 
-      border-radius: 50%;
-      width: 64px;
-      height: 64px;
-      animation: spin 0.7s linear infinite;
-  }
+.loader {
+    border: 0.5rem solid rgba(204, 204, 204, .35); 
+    border-top: 0.5rem solid rgba(204, 204, 204, .85); 
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    animation: spin 0.7s linear infinite;
+}
 
-  
-  .loader-white {
-      border: 0.5rem solid rgba(255, 255, 255, .35); 
-      border-top: 0.5rem solid rgba(255, 255, 255, .85); 
-  }
-  
+
+.loader-white {
+    border: 0.5rem solid rgba(255, 255, 255, .35); 
+    border-top: 0.5rem solid rgba(255, 255, 255, .85); 
+}
