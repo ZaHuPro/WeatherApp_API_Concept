@@ -19,13 +19,13 @@ $(document).ready(function(){
         {
             CheckMe = true;
             $("#inputTitle").html("pin | country");
-            $("#inputForm").html("<div class='form-group row'><label for='inputLable' class='col-sm-3 col-form-label'>Pincode</label><div class='col-sm'><input type='text' class='form-control' id='inputPincode' placeholder='PinCode...'></div></div><div class='form-group row'><label for='inputLable' class='col-sm-3 col-form-label'>Country</label><div class='col-sm'><input type='text' class='form-control' id='inputCountry' placeholder='Country Code(in, uk..)'></div></div>");
+            $("#inputChange").html("<label for='inputLable' class='col-sm-3 col-form-label'>Pincode</label><div class='col-sm'><input type='text' class='form-control' id='inputPincode' placeholder='PinCode...'></div>");
             inputCondition = false;
 
         }else{
             CheckMe = false;
             $("#inputTitle").html("city | country")
-            $("#inputForm").html("<div class='form-group row'><label for='inputLable' class='col-sm-3 col-form-label'>City</label><div class='col-sm'><input type='text' class='form-control' id='inputCity' placeholder='City Name...'></div></div><div class='form-group row'><label for='inputLable' class='col-sm-3 col-form-label'>Country</label><div class='col-sm'><input type='text' class='form-control' id='inputCountry' placeholder='Country Name...'></div></div>");
+            $("#inputChange").html("<label for='inputLable' class='col-sm-3 col-form-label'>City</label><div class='col-sm'><input type='text' class='form-control' id='inputCity' placeholder='City Name...'></div>");
             inputCondition = true;
         }
     });
@@ -36,12 +36,15 @@ $(document).ready(function(){
         var Loading  = "<div class='row align-items-center justify-content-center'><div class=' loader loader-white'></div>";
         $("#result").html(Loading);
 
+        var countryCode = $("#inputCountry option:selected").attr("value");
+        var country =  $("#inputCountry option:selected").text();
+
         if (CheckMe == true) {
-            WeatherLink = "https://api.openweathermap.org/data/2.5/weather?zip=" + $("#inputPincode").val()+ "," +$("#inputCountry").val() + "&appid=" + API_KEY_Weather
+            WeatherLink = "https://api.openweathermap.org/data/2.5/weather?zip=" + $("#inputPincode").val()+ "," + countryCode + "&appid=" + API_KEY_Weather
             
         }else{
         
-            WeatherLink = "https://api.openweathermap.org/data/2.5/weather?q=" + $("#inputCity").val() + "," +$("#inputCountry").val() + "&appid=" + API_KEY_Weather
+            WeatherLink = "https://api.openweathermap.org/data/2.5/weather?q=" + $("#inputCity").val() + "," + countryCode + "&appid=" + API_KEY_Weather
         }
         LoadWeatherData(WeatherLink);
               
@@ -59,14 +62,13 @@ $(document).ready(function(){
             var TemperatureMin = responseData.main.temp_min - 273.15;
             var TemperatureMax = responseData.main.temp_max - 273.15;
             var HTMLData = "<h2>" + responseData.name + "</h2><p>"+ responseData.weather[0].description +"</p><div class='table-responsive text-nowrap'><table class='table'><tr><th>Temperature</th><td>" + Temperature.toFixed(2) +" C</td><th>Short Note</th><td>"+responseData.weather[0].main +"</td></tr><tr><th>Min Temp</th><td>"+ TemperatureMin.toFixed(2) +"</td><th>Max Temp</th><td>"+ TemperatureMax.toFixed(2) +"</td></tr><tr><th>Pressure</th><td>" + responseData.main.pressure + "</td><th>Humidity</th><td>"+ responseData.main.humidity +"</td></tr><tr><th>Wind Speed</th><td>"+ responseData.wind.speed +" m/s</td><th>Wind Degree</th><td>" + responseData.wind.deg.toFixed(2) +"</td> </tr> </table> </div> ";
-            console.log(HTMLData);
             $("#result").html(HTMLData);
             API_Photo_Search = responseData.weather[0].main;
             LoadPhotoData(API_Photo_Search);
 
         },
             error: function (responseData, textStatus, errorThrown) {
-               var ErrorText = "<h3>Error on Input</h3><p>Unknown input from you, filled corret requirements</p><p>For City :: (Chennai, India)</p><p>For Pin :: (Chennai, In)</p><p>Note: For Pincode mode Full Country Name will not be Accepted, Insert Country Code</p>";
+               var ErrorText = "<h3>Error on Input</h3><p>Unknown input from you, filled corret requirements</p><p>For City :: (Chennai, India)</p><p>For Pin :: (606601, India)</p>";
                $("#result").html(ErrorText);
             }
         });
